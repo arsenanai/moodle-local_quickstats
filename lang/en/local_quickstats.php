@@ -11,7 +11,4 @@ $string['days'] = 'Number of days';
 $string['days_desc'] = 'Number of days to display data for';
 $string['enableplugin'] = 'Enable QuickStats plugin';
 $string['enableplugin_desc'] = 'Enable or disable the QuickStats plugin';
-// $string['viewplugin'] = 'view the QuickStats plugin';
-// $string['nopermissions'] = 'Sorry, but you do not currently have permissions to {$a}.';
-// $string['disabledplugin'] = 'Sorry, but the QuickStats plugin is currently disabled.';
 ?>
