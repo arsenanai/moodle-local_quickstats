@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <XMLDB PATH="local/quickstats/db" VERSION="2025012300" COMMENT="QuickStats database schema">
+      <TABLES>
+          <TABLE NAME="local_quickstats" COMMENT="QuickStats table">
+              <FIELDS>
+                  <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                  <FIELD NAME="activeuserscount" TYPE="int" LENGTH="10" NOTNULL="true" />
+                  <FIELD NAME="periodstart" TYPE="int" LENGTH="10" NOTNULL="true" />
+                  <FIELD NAME="periodend" TYPE="int" LENGTH="10" NOTNULL="true" />
+                  <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" />
+              </FIELDS>
+              <KEYS>
+                  <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+              </KEYS>
+          </TABLE>
+      </TABLES>
+  </XMLDB>
