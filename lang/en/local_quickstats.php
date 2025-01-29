@@ -1,14 +1,15 @@
 <?php
 /**
- * Language file for the QuickStats plugin.
+ * Strings for the QuickStats plugin.
  *
  * @package    local_quickstats
- * @copyright  2025 Arsen Anay
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die();
+
 $string['pluginname'] = 'QuickStats';
-$string['days'] = 'Number of days';
-$string['days_desc'] = 'Number of days to display data for';
-$string['enableplugin'] = 'Enable QuickStats plugin';
-$string['enableplugin_desc'] = 'Enable or disable the QuickStats plugin';
-?>
+$string['enable'] = 'Enable QuickStats';
+$string['enabledesc'] = 'Enable or disable the QuickStats plugin.';
+$string['ndays'] = 'Number of days';
+$string['ndaysdesc'] = 'Number of days to display active users count in the graph.';
+$string['updateactiveusers'] = 'Update Active Users';
