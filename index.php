@@ -7,7 +7,7 @@
 
 require_once('../../config.php');
 require_once($CFG->dirroot . '/local/quickstats/lib.php');
-require_once($CFG->dirroot . '/local/quickstats/classes/externallib.php');  // Manually include the externallib file
+require_once($CFG->dirroot . '/local/quickstats/classes/externallib.php');
 require_once($CFG->libdir . '/adminlib.php');
 
 require_login();
