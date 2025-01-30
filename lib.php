@@ -22,8 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Updates the active users count.
  */
@@ -55,11 +53,11 @@ function local_quickstats_update_active_users() {
 function local_quickstats_insert_mock_data() {
     global $DB;
 
-    $ndays = 30; // Number of days for mock data
+    $ndays = 30;
     for ($i = 0; $i < $ndays; $i++) {
         $periodstart = strtotime("-{$i} days midnight");
         $periodend = strtotime("-{$i} days 23:59:59");
-        $activeuserscount = rand(1, 100); // Random count for mock data
+        $activeuserscount = rand(1, 100);
 
         $record = new stdClass();
         $record->activeuserscount = $activeuserscount;

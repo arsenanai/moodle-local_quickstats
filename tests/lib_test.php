@@ -22,6 +22,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace local_quickstats;
+
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
@@ -30,21 +32,27 @@ require_once($CFG->dirroot . '/local/quickstats/lib.php');
 /**
  * Unit tests for the QuickStats plugin.
  */
-class local_quickstats_lib_test extends advanced_testcase {
+final class lib_test extends \advanced_testcase {
 
+    /**
+     * Set up the test case.
+     */
     protected function setUp(): void {
         parent::setUp();
-        $this->resetAfterTest(true); // Ensure each test runs in a clean state.
+        $this->resetAfterTest(true);
         $this->create_schema();
     }
 
-    protected function create_schema() {
+    /**
+     * Create the database schema for tests.
+     */
+    protected function create_schema(): void {
         global $DB;
 
         $dbman = $DB->get_manager();
 
         // Define table local_quickstats to be created.
-        $table = new xmldb_table('local_quickstats');
+        $table = new \xmldb_table('local_quickstats');
 
         // Adding fields to table local_quickstats.
         $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
@@ -54,7 +62,7 @@ class local_quickstats_lib_test extends advanced_testcase {
         $table->add_field('timecreated', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
 
         // Adding keys to table local_quickstats.
-        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
 
         // Conditionally launch create table for local_quickstats.
         if (!$dbman->table_exists($table)) {
@@ -64,8 +72,10 @@ class local_quickstats_lib_test extends advanced_testcase {
 
     /**
      * Test the update_active_users function.
+     *
+     * @covers \local_quickstats\update_active_users
      */
-    public function test_update_active_users() {
+    public function test_update_active_users(): void {
         global $DB;
 
         // Start a transaction to isolate the test.
@@ -89,7 +99,11 @@ class local_quickstats_lib_test extends advanced_testcase {
         $this->assertNotEmpty($record, 'The record should not be empty');
         $this->assertEquals(2, $record->activeuserscount, 'The active users count should be 2');
         $this->assertEquals(strtotime('today midnight'), $record->periodstart, 'The period start should be today midnight');
-        $this->assertEquals(strtotime('tomorrow midnight') - 1, $record->periodend, 'The period end should be tomorrow midnight - 1 second');
+        $this->assertEquals(
+            strtotime('tomorrow midnight') - 1,
+            $record->periodend,
+            'The period end should be tomorrow midnight - 1 second'
+        );
 
         // Commit the transaction to ensure data is written.
         $transaction->allow_commit();

@@ -26,9 +26,9 @@ defined('MOODLE_INTERNAL') || die();
 
 $functions = [
     'local_quickstats_get_active_users' => [
-        'classname'     => 'local_quickstats\classes\externallib',  // Correct namespace
+        'classname'     => 'local_quickstats\classes\externallib',
         'methodname'    => 'get_active_users',
-        'classpath'     => 'local/quickstats/classes/externallib.php',  // Correct file path
+        'classpath'     => 'local/quickstats/classes/externallib.php',
         'description'   => 'Returns active users count for the past N days.',
         'type'          => 'read',
         'ajax'          => true,

@@ -22,7 +22,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_quickstats\classes;
+namespace local_quickstats;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -32,15 +32,21 @@ require_once($CFG->dirroot . '/webservice/tests/helpers.php');
 /**
  * Unit tests for the QuickStats plugin's external functions.
  */
-class externallib_test extends \externallib_advanced_testcase {
+final class externallib_test extends \externallib_advanced_testcase {
 
+    /**
+     * Set up the test case.
+     */
     protected function setUp(): void {
         parent::setUp();
         $this->resetAfterTest(true);
         $this->create_schema();
     }
 
-    protected function create_schema() {
+    /**
+     * Create the database schema for tests.
+     */
+    protected function create_schema(): void {
         global $DB;
 
         $dbman = $DB->get_manager();
@@ -65,12 +71,12 @@ class externallib_test extends \externallib_advanced_testcase {
     }
 
     /**
-     * Test the execute function.
+     * Test the get_active_users function.
      *
      * @covers \local_quickstats\classes\externallib::get_active_users
      * @runInSeparateProcess
      */
-    public function test_get_active_users() {
+    public function test_get_active_users(): void {
         global $DB;
         global $CFG;
         require_once($CFG->dirroot . '/local/quickstats/classes/externallib.php');
@@ -94,11 +100,11 @@ class externallib_test extends \externallib_advanced_testcase {
         }
 
         // Call the external function.
-        $result = externallib::get_active_users();
+        $result = \local_quickstats\classes\externallib::get_active_users();
 
         // Execute the return values cleaning process to simulate the web service server.
         $result = \core_external\external_api::clean_returnvalue(
-            externallib::get_active_users_returns(),
+            \local_quickstats\classes\externallib::get_active_users_returns(),
             $result
         );
 
@@ -108,7 +114,11 @@ class externallib_test extends \externallib_advanced_testcase {
 
         // Check each day's active users count.
         foreach ($mockdata as $key => $data) {
-            $this->assertEquals($data->activeuserscount, $result['counts'][$key], "The count for day {$key} should match the mock data");
+            $this->assertEquals(
+                $data->activeuserscount,
+                $result['counts'][$key],
+                "The count for day {$key} should match the mock data"
+            );
         }
     }
 }

@@ -4,4 +4,4 @@ php /bitnami/moodle/admin/cli/scheduled_task.php --execute="\local_quickstats\ta
 
 php admin/tool/phpunit/cli/init.php
 vendor/bin/phpunit local/quickstats/tests/externallib_test.php
-    vendor/bin/phpunit local/quickstats/tests/lib_test.php
+vendor/bin/phpunit local/quickstats/tests/lib_test.php

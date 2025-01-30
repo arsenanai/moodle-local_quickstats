@@ -35,7 +35,7 @@ $PAGE->set_context($context);
 $PAGE->set_title('QuickStats');
 $PAGE->set_heading('QuickStats Page');
 $PAGE->requires->js_call_amd('local_quickstats/chart', 'init');
-$PAGE->requires->css('/local/quickstats/styles.css'); // Add CSS if needed
+$PAGE->requires->css('/local/quickstats/styles.css');
 
 echo $OUTPUT->header();
 echo $OUTPUT->heading('QuickStats');

@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2025012800; // Increment this version number
+$plugin->version = 2025012800;
 $plugin->requires = 1051700;
 $plugin->component = 'local_quickstats';
 $plugin->maturity = MATURITY_STABLE;

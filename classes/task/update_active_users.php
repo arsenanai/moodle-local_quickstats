@@ -27,7 +27,7 @@ namespace local_quickstats\task;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . '/local/quickstats/lib.php'); // Include the lib file to access the function
+require_once($CFG->dirroot . '/local/quickstats/lib.php');
 
 /**
  * Class update_active_users
